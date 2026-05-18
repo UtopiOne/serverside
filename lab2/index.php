@@ -39,7 +39,7 @@
             <button type="submit" value="Submit">Submit</button>
         </form>
 
-        <a href="feedback_form_2.php">Page 2</a>
+        <a href="lab2/page2.php">Page 2</a>
     </main>
 
     <footer>

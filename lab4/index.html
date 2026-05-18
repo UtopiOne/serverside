@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    #calc-input {
+        width: 200px;
+        height: 30px;
+        font-size: 18px;
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    #calc-error {
+        color: red;
+        height: 20px;
+        margin-bottom: 20px;
+    }
+
+    #calc-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 50px);
+        gap: 10px;
+    }
+
+    #calc-buttons button {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+</style>
+
+<body>
+    <h1>Калькулятор</h1>
+
+    <input id="calc-input" type="text">
+    <p id="calc-error"></p>
+
+    <div id="calc-buttons">
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>+</button>
+        <button>-</button>
+        <button>*</button>
+        <button>/</button>
+        <button>^</button>
+        <button>sqrt</button>
+        <button>ln</button>
+        <button>log</button>
+        <button>!</button>
+        <button>pi</button>
+        <button>e</button>
+        <button>=</button>
+        <button>C</button>
+    </div>
+</body>
+
+<script>
+    const buttons = document.getElementById('calc-buttons');
+    const input = document.getElementById('calc-input');
+
+    function submitExpression() {
+        fetch(`lab4/server.php?expression=${encodeURIComponent(input.value)}`)
+            .then(response => response.text())
+            .then(result => {
+                input.value = result;
+                document.getElementById('calc-error').textContent = '';
+            })
+            .catch(error => {
+                document.getElementById('calc-error').textContent = 'Error';
+                console.error('Error:', error);
+            });
+    }
+
+    buttons.addEventListener('click', (e) => {
+        const value = e.target.textContent;
+
+        if (value === 'C') {
+            input.value = '';
+        } else if (value === '=') {
+            submitExpression();
+        } else {
+            input.value += value;
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            submitExpression();
+        } else if (e.key === 'Escape') {
+            input.value = '';
+        } else if (!e.ctrlKey && !e.altKey && !e.metaKey) {
+            input.focus();
+        }
+    });
+</script>
+
+</html>
