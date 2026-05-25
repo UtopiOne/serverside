@@ -84,11 +84,11 @@
         fetch(`lab4/server.php?expression=${encodeURIComponent(input.value)}`)
             .then(response => response.text())
             .then(result => {
-                input.value = result;
                 document.getElementById('calc-error').textContent = '';
+                input.value = result;
             })
             .catch(error => {
-                document.getElementById('calc-error').textContent = 'Error';
+                document.getElementById('calc-error').textContent = `${error}`;
                 console.error('Error:', error);
             });
     }

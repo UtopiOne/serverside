@@ -15,9 +15,15 @@
 
     <main>
         <?php
-        echo "Hello World!";
+        $strings = ["Hello World", "Greetings", "Testing!", "PHP is fun!", "Have a nice day!"];
+
+        echo $strings[array_rand($strings)] . "<br>";
         ?>
     </main>
+
+    <footer>
+        <p>задание для самостоятельной работы</p>
+    </footer>
 
 </body>
 
