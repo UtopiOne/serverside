@@ -41,4 +41,4 @@ echo "x position: $position operand" . "<br>";
 echo "x = $x" . "<br>";
 ?>
 
-<img src="./lab3.drawio.png" alt="Equation Diagram">
+<img src="/media/lab3.drawio.png" alt="Equation Diagram">
