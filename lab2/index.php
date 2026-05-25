@@ -9,7 +9,7 @@
 
 <body>
     <header>
-        <img src="media/logo.png" style="filter: invert();" alt="logo">
+        <img src="/media/logo.png" style="filter: invert();" alt="logo">
 
         <h1>Feedback Form</h1>
     </header>
@@ -39,7 +39,7 @@
             <button type="submit" value="Submit">Submit</button>
         </form>
 
-        <a href="lab2/page2.php">Page 2</a>
+        <a href="/lab2/page2.php">Page 2</a>
     </main>
 
     <footer>
