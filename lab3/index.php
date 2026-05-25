@@ -1,7 +1,8 @@
 <?php
 $equation = "22 * x = 220";
 
-[$lhs, $rhs] = array_map('trim', explode('=', $equation));
+$trimmed_array = array_map('trim', explode('=', $equation));
+[$lhs, $rhs] = $trimmed_array;
 $result = (float)trim($rhs);
 
 preg_match('/^(.+?)\s*([\+\-\*\/])\s*(.+)$/', trim($lhs), $matches);
@@ -34,7 +35,10 @@ switch ($operator) {
         die("Unsupported operator: $operator\n");
 }
 
-echo "Equation : $equation\n";
-echo "Operator : $operator\n";
-echo "x position: $position operand\n";
-echo "x = $x\n";
+echo "Equation : $equation" . "<br>";
+echo "Operator : $operator" . "<br>";
+echo "x position: $position operand" . "<br>";
+echo "x = $x" . "<br>";
+?>
+
+<img src="./lab3.drawio.png" alt="Equation Diagram">
