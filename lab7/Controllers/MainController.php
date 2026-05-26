@@ -6,16 +6,36 @@ class MainController
 {
     public function main()
     {
-        echo 'Главная страница';
+        $this->render('main');
+    }
+
+    function aboutMe()
+    {
+        $this->render('message', [
+            'title' => 'Обо мне',
+            'message' => 'Страница обо мне.'
+        ]);
     }
 
     public function sayHello(string $name)
     {
-        echo 'Привет, ' . $name;
+        $this->render('message', [
+            'title' => 'Привет',
+            'message' => 'Привет, ' . $name . '!'
+        ]);
     }
 
     public function sayBye(string $name)
     {
-        echo 'Пока, ' . $name;
+        $this->render('message', [
+            'title' => 'Пока',
+            'message' => 'Пока, ' . $name . '!'
+        ]);
+    }
+
+    public function render(string $view, array $data = [])
+    {
+        extract($data, EXTR_SKIP);
+        include __DIR__ . '/../Views/' . $view . '.php';
     }
 }

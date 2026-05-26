@@ -13,10 +13,28 @@ $controller = new \lab7\Controllers\MainController();
 $path = trim($_SERVER['PATH_INFO'] ?? '', '/');
 $parts = explode('/', $path);
 
-if ($parts[0] === 'bye' && !empty($parts[1])) {
-    $controller->sayBye($parts[1]);
-} elseif (!empty($_GET['name'])) {
-    $controller->sayHello($_GET['name']);
-} else {
-    $controller->main();
+if (preg_match('#^hello/([^/]+)$#', $path, $matches)) {
+    $controller->sayHello($matches[1]);
+    return;
 }
+
+if (preg_match('#^bye/([^/]+)$#', $path, $matches)) {
+    $controller->sayBye($matches[1]);
+    return;
+}
+
+if ($path === 'about-me') {
+    $controller->aboutMe();
+    return;
+}
+
+if ($path === '/' || $path === '' || $path === 'index.php') {
+    $controller->main();
+    return;
+}
+
+http_response_code(404);
+$controller->render('message', [
+    'title' => 'Страница не найдена',
+    'message' => 'Запрашиваемая страница не найдена.'
+]);

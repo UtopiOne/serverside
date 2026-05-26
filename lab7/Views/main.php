@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Мой блог</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/lab7/style.css">
 </head>
 <body>
 
@@ -26,8 +26,8 @@
         <td width="300px" class="sidebar">
             <div class="sidebarHeader">Меню</div>
             <ul>
-                <li><a href="/">Главная страница</a></li>
-                <li><a href="/about-me">Обо мне</a></li>
+                <li><a href="/lab7/">Главная страница</a></li>
+                <li><a href="/lab7/about-me">Обо мне</a></li>
             </ul>
         </td>
     </tr>
