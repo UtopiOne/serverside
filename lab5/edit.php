@@ -74,8 +74,8 @@ function get_edit_form(array $row, string $message = '', bool $success = false):
                 <label>Пол</label>
                 <select name="gender">
                     <option value=""></option>
-                    <option value="мужской" <?= $row['gender'] === 'мужской' ? 'selected' : '' ?>>мужской</option>
-                    <option value="женский" <?= $row['gender'] === 'женский' ? 'selected' : '' ?>>женский</option>
+                    <option value="мужской" <?= $row['gender'] === 'Мужской' ? 'selected' : '' ?>>мужской</option>
+                    <option value="женский" <?= $row['gender'] === 'Женский' ? 'selected' : '' ?>>женский</option>
                 </select>
             </div>
             <div class="add">
