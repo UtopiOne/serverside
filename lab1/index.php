@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <img src="../media/logo.png" style="filter: invert();" alt="logo">
+        <img src="/media/logo.png" style="filter: invert();" alt="logo">
     </header>
 
     <main>

@@ -81,7 +81,7 @@
     const input = document.getElementById('calc-input');
 
     function submitExpression() {
-        fetch(`lab4/server.php?expression=${encodeURIComponent(input.value)}`)
+        fetch(`/lab4/server.php?expression=${encodeURIComponent(input.value)}`)
             .then(response => response.text())
             .then(result => {
                 document.getElementById('calc-error').textContent = '';
