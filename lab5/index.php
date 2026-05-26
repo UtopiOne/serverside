@@ -150,7 +150,7 @@ function init_db(): PDO
     <main>
         <?php if (($_GET['action'] ?? '') === 'add'): ?>
             <?php echo get_form($row, $message, $success); ?>
-        <?php elseif (($_GET['action'] ?? '') === 'view'): ?>
+        <?php elseif (($_GET['action'] ?? 'view') === 'view'): ?>
             <?php echo get_viewer($db, (int) ($_GET['page'] ?? 1), SortTypes::TimeAdded, SortOrder::ASC); ?>
         <?php elseif (($_GET['action'] ?? '') === 'delete'): ?>
             <?php $allDeleteItems = get_all_items($db); ?>

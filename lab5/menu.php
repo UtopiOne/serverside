@@ -1,7 +1,7 @@
 <?php
 function get_menu()
 {
-    $action = $_GET['action'] ?? '';
+    $action = $_GET['action'] ?? 'view';
     $links = [
         'view'   => 'Просмотр',
         'add'    => 'Добавление записи',
