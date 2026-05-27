@@ -42,6 +42,16 @@ abstract class ActiveRecordEntity
         return $db->query('SELECT * FROM `' . static::getTableName() . '`;', [], static::class);
     }
 
+    public static function findByColumn(string $column, $value): array
+    {
+        $db = Db::getInstance();
+        return $db->query(
+            'SELECT * FROM `' . static::getTableName() . '` WHERE `' . $column . '` = :value;',
+            [':value' => $value],
+            static::class
+        );
+    }
+
     public function save(): void
     {
         $db = Db::getInstance();

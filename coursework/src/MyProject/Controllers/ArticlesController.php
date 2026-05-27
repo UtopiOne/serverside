@@ -48,7 +48,7 @@ class ArticlesController
             $article->setName($_POST['name']);
             $article->setText($_POST['text']);
             $article->save();
-            header('Location: /lab10/articles/' . $article->getId(), true, 302);
+            header('Location: /coursework/articles/' . $article->getId(), true, 302);
             exit();
         }
 

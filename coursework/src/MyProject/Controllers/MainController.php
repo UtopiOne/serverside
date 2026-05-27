@@ -3,6 +3,8 @@
 namespace MyProject\Controllers;
 
 use MyProject\Models\Articles\Article;
+use MyProject\Models\Tours\Tour;
+use MyProject\Models\Tours\TourTag;
 use MyProject\View\View;
 
 class MainController
@@ -17,6 +19,12 @@ class MainController
     public function main()
     {
         $articles = Article::findAll();
-        $this->view->renderHtml('main/main.php', ['articles' => $articles]);
+        $tours = Tour::findAllWithTags();
+        $tags = TourTag::findAll();
+        $this->view->renderHtml('main/main.php', [
+            'articles' => $articles,
+            'tours'    => $tours,
+            'tags'     => $tags,
+        ]);
     }
 }
