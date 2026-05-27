@@ -38,6 +38,20 @@ class Article extends ActiveRecordEntity
         $this->text = $text;
     }
 
+    public function setAuthorId(int $authorId): void
+    {
+        $this->authorId = $authorId;
+    }
+
+    public static function make(string $name, string $text, int $authorId): self
+    {
+        $article = new self();
+        $article->setName($name);
+        $article->setText($text);
+        $article->setAuthorId($authorId);
+        return $article;
+    }
+
     protected static function getTableName(): string
     {
         return 'articles';

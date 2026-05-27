@@ -74,5 +74,43 @@ abstract class ActiveRecordEntity
         );
     }
 
+    public function create(): void
+    {
+        $db = Db::getInstance();
+
+        $columns = get_object_vars($this);
+        unset($columns['id']);
+
+        $cols   = [];
+        $params = [];
+        foreach ($columns as $camel => $val) {
+            if ($val === null) {
+                continue;
+            }
+            $snake          = strtolower(preg_replace('/[A-Z]/', '_$0', lcfirst($camel)));
+            $cols[]         = "`$snake`";
+            $params[":$snake"] = $val;
+        }
+
+        $db->query(
+            'INSERT INTO `' . static::getTableName() . '` (' . implode(', ', $cols) . ')'
+                . ' VALUES (' . implode(', ', array_keys($params)) . ');',
+            $params,
+            static::class
+        );
+
+        $this->id = $db->lastInsertId();
+    }
+
+    public function delete(): void
+    {
+        $db = Db::getInstance();
+        $db->query(
+            'DELETE FROM `' . static::getTableName() . '` WHERE id = :id;',
+            [':id' => $this->id],
+            static::class
+        );
+    }
+
     abstract protected static function getTableName(): string;
 }

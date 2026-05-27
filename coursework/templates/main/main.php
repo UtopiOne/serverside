@@ -3,16 +3,26 @@ $title = 'Список статей';
 include __DIR__ . '/../header.php';
 ?>
 
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <h2 style="margin:0;">Статьи</h2>
+    <a href="/coursework/articles/add" class="btn-primary">+ Новая статья</a>
+</div>
+
 <?php foreach ($articles as $article): ?>
     <article class="article-preview">
         <h2>
             <a href="/coursework/articles/<?= $article->getId() ?>">
                 <?= htmlspecialchars($article->getName(), ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <a href="/coursework/article/<?= $article->getId() ?>/edit" class="edit-link">[редактировать]</a>
         </h2>
         <p><?= nl2br(htmlspecialchars($article->getText(), ENT_QUOTES, 'UTF-8')) ?></p>
-        <hr>
+        <div style="display:flex;gap:12px;margin-top:8px;">
+            <a href="/coursework/article/<?= $article->getId() ?>/edit" class="edit-link">Редактировать</a>
+            <form method="post" action="/coursework/articles/<?= $article->getId() ?>/delete"
+                  onsubmit="return confirm('Удалить статью?')" style="margin:0;">
+                <button type="submit" class="btn-danger">Удалить</button>
+            </form>
+        </div>
     </article>
 <?php endforeach; ?>
 

@@ -47,6 +47,11 @@ class Db
         return $sth->fetchAll();
     }
 
+    public function lastInsertId(): int
+    {
+        return (int) $this->pdo->lastInsertId();
+    }
+
     public static function getInstance(): self
     {
         if (self::$instance === null) {
