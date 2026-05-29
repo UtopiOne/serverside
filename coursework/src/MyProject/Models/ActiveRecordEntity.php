@@ -4,6 +4,7 @@ namespace MyProject\Models;
 
 use MyProject\Services\Db;
 
+#[\AllowDynamicProperties]
 abstract class ActiveRecordEntity
 {
     protected $id;
