@@ -20,7 +20,7 @@ class MainController
     public function sayHello(string $name)
     {
         $this->render('message', [
-            'title' => 'Привет',
+            'title' => 'Страница приветствия',
             'message' => 'Привет, ' . $name . '!'
         ]);
     }
